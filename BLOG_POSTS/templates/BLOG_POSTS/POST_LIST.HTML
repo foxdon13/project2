@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}
+Post Lists
+{% endblock %}
+
+{% block content %}
+
+
+
+{% for post in posts %}
+
+<p><a href="{% url 'post_detail' post.slug post.publish.year post.publish.month post.publish.day %}"> {{post.title}}</a>
+</p>
+
+<p>{{post.body|truncatewords:30|linebreaks}}</p>
+<P>Published on {{post.publish}} by {{post.author}}</P>
+{% endfor %}
+
+<a href="{% url 'post_create' %}"><button type='button' class='btn btn-secondary'>Create
+    </button></a>
+{% endblock %}
